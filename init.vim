@@ -27,6 +27,7 @@ Plug 'mklabs/split-term.vim'
 " Plug 'mhartington/deoplete-typescript'
 Plug 'leafgarland/typescript-vim'
 Plug 'fntlnz/atags.vim'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -37,6 +38,8 @@ set clipboard+=unnamedplus
 nnoremap N Nzz
 nnoremap n nzz
 nnoremap = V=
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 set tags=.ctag
 
 " Begin indentation
@@ -60,18 +63,21 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 nnoremap <tab>   :bnext<CR>
 nnoremap <S-tab> :bprevious<CR>
+nnoremap <Leader><TAB> <C-w><C-w>
+nnoremap <Leader><S-tab> <C-w>h
 nnoremap <Leader>q :bdelete<CR>
 nnoremap <Esc> :noh<return><Esc>
+nnoremap <Leader>l ^vg_
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 noremap <Leader>f :CtrlSF<space>
-let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules', 'node_modules', '.*']
+let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules', 'node_modules', '.*', '.ctag']
 
 
 " Do neomake on every file
 autocmd! BufWritePost,BufEnter * Neomake
-au BufWritePost *.c,*.cpp,*.h silent! !ctags -R &
+autocmd BufWritePost * call atags#generate()
 
 " Begin Autocomplete: https://www.gregjs.com/vim/2016/configuring-the-deoplete-asynchronous-keyword-completion-plugin-with-tern-for-vim/
 let g:deoplete#enable_at_startup = 1
@@ -161,3 +167,8 @@ let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
 " let g:airline_theme= 'gruvbox'
 " End Tricks
+
+let g:atags_build_commands_list = ["ctags -R"]
+
+" Emmet
+let g:user_emmet_install_global = 0
