@@ -24,13 +24,14 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mklabs/split-term.vim'
 " Plug 'vifm/neovim-vifm'
-" Plug 'mhartington/deoplete-typescript'
+Plug 'mhartington/deoplete-typescript'
 Plug 'leafgarland/typescript-vim'
 Plug 'fntlnz/atags.vim'
 Plug 'mattn/emmet-vim'
+Plug 'gcorne/vim-sass-lint'
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
-
 
 set number
 set cursorline
@@ -77,7 +78,7 @@ let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules', 'node_modules', '.
 
 " Do neomake on every file
 autocmd! BufWritePost,BufEnter * Neomake
-autocmd BufWritePost * call atags#generate()
+" autocmd BufWritePost * call atags#generate()
 
 " Begin Autocomplete: https://www.gregjs.com/vim/2016/configuring-the-deoplete-asynchronous-keyword-completion-plugin-with-tern-for-vim/
 let g:deoplete#enable_at_startup = 1
@@ -85,10 +86,15 @@ let g:deoplete#auto_completion_start_length = 1
 let g:deoplete#omni#functions = {}
 let g:deoplete#omni#functions.javascript = ['tern#Complete',' jspc#omni']
 
+let g:sass_lint_config = 'app/assets/styles/.scss-lint.yml'
+function! neomake#makers#ft#scss#EnabledMakers()
+    return executable('sass-lint') ? ['sasslint'] : ['scsslint']
+endfunction
+
 set completeopt=longest,menuone,preview
 let g:deoplete#sources = {}
 let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs']
-let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
