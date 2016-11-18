@@ -30,6 +30,7 @@ Plug 'fntlnz/atags.vim'
 Plug 'mattn/emmet-vim'
 Plug 'gcorne/vim-sass-lint'
 Plug 'scrooloose/nerdtree'
+Plug 'valloric/matchtagalways'
 
 call plug#end()
 
@@ -41,6 +42,7 @@ nnoremap n nzz
 nnoremap = V=
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
+nnoremap <leader>% :MtaJumpToOtherTag<cr>
 set tags=.ctag
 
 " Begin indentation
@@ -69,6 +71,8 @@ nnoremap <Leader><S-tab> <C-w>h
 nnoremap <Leader>q :bdelete<CR>
 nnoremap <Esc> :noh<return><Esc>
 nnoremap <Leader>l ^vg_
+nnoremap <Leader>t :NERDTree<cr>
+nnoremap <Leader>f :NERDTreeFind<cr>
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -140,7 +144,8 @@ set smartcase           " ... unless the query has capital letters.
 set gdefault            " Use 'g' flag by default with :s/foo/bar/.
 
 " Search and Replace
-nmap <Leader>s :%s//g<Left><Left>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+" nmap <Leader>s :%s//g<Left><Left>
 
 " Relative numbering
 function! NumberToggle()
@@ -156,7 +161,7 @@ endfunc
 nnoremap <leader>r :call NumberToggle()<cr>
 
 " Use ; for commands.
-nnoremap ; :
+" nnoremap ; :
 " Use Q to execute default register.
 nnoremap Q @q
 
@@ -178,3 +183,4 @@ let g:atags_build_commands_list = ["ctags -R"]
 
 " Emmet
 let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
