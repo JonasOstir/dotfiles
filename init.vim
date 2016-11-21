@@ -12,7 +12,7 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'benekastah/neomake'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'raimondi/delimitmate'
+" Plug 'raimondi/delimitmate'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
@@ -31,6 +31,7 @@ Plug 'mattn/emmet-vim'
 Plug 'gcorne/vim-sass-lint'
 Plug 'scrooloose/nerdtree'
 Plug 'valloric/matchtagalways'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -71,13 +72,14 @@ nnoremap <Leader><S-tab> <C-w>h
 nnoremap <Leader>q :bdelete<CR>
 nnoremap <Esc> :noh<return><Esc>
 nnoremap <Leader>l ^vg_
-nnoremap <Leader>t :NERDTree<cr>
-nnoremap <Leader>f :NERDTreeFind<cr>
+nnoremap <Leader>nt :NERDTree<cr>
+nnoremap <Leader>nf :NERDTreeFind<cr>
+nnoremap <Leader>t :call atags#generate()<cr>
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 noremap <Leader>f :CtrlSF<space>
-let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules', 'node_modules', '.*', '.ctag']
+let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules', 'node_modules', '.*', '.ctag', 'fonts']
 
 
 " Do neomake on every file
@@ -184,3 +186,9 @@ let g:atags_build_commands_list = ["ctags -R"]
 " Emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+set termguicolors
+set background=light " or dark
+colorscheme solarized
+
+let g:AutoPairsFlyMode = 1
