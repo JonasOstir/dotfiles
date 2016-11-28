@@ -6,6 +6,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'benekastah/neomake'
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'dyng/ctrlsf.vim'
+Plug 'ervandew/supertab'
 Plug 'fntlnz/atags.vim'
 Plug 'gcorne/vim-sass-lint'
 Plug 'herringtondarkholme/yats.vim'
@@ -14,6 +15,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mhartington/deoplete-typescript', { 'do': ':UpdateRemotePlugins' }
 Plug 'mklabs/split-term.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -76,12 +78,13 @@ function! neomake#makers#ft#scss#EnabledMakers()
 endfunction
 
 filetype plugin indent on
-autocmd! BufWritePost,BufEnter * Neomake
 colorscheme solarized
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$\|\t/
+autocmd! BufWritePost,BufEnter * Neomake
 autocmd FileType html,css EmmetInstall
 autocmd FileType javascript let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
 let mapleader="\<SPACE>"
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -111,8 +114,8 @@ let g:user_emmet_install_global = 0
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:SuperTabClosePreviewOnPopupClose = 1
 
-" inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
-" 
+inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
+
 " nnoremap <C-d>            <C-d>zz
 " nnoremap <C-p>            :FuzzyOpen<CR>
 " nnoremap <C-u>            <C-u>zz
