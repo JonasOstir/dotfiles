@@ -1,76 +1,79 @@
 call plug#begin()
- 
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'mhartington/deoplete-typescript'
-Plug 'herringtondarkholme/yats.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
+Plug 'benekastah/neomake'
 Plug 'benekastah/neomake'
 Plug 'cloudhead/neovim-fuzzy'
-Plug 'altercation/vim-colors-solarized'
-Plug 'airblade/vim-gitgutter'
+Plug 'herringtondarkholme/yats.vim'
+Plug 'mhartington/deoplete-typescript'
+Plug 'scrooloose/nerdtree'
 
 " Add plugins to &runtimepath
 
 call plug#end()
 
-" set number
-" set cursorline
-" set clipboard+=unnamedplus
-" set tags=.git/.ctags
-" set shiftwidth=2
-" set tabstop=2
-" set expandtab
-" set list
-" set showcmd
-" set showmatch
-" set showmode
-" set ruler
-" set modeline
-" set esckeys
-" set linespace=0
-" set nojoinspaces
-" set splitbelow
-" set splitright
-" set ignorecase          " Make searching case insensitive
-" set smartcase           " ... unless the query has capital letters.
-" set gdefault            " Use 'g' flag by default with :s/foo/bar/.
-" set termguicolors
-" set background=light " or dark
-" set completeopt=longest,menuone,preview
-" 
-" if !&scrolloff
-"   set scrolloff=3
-" endif
-" if !&sidescrolloff
-"   set sidescrolloff=5
-" endif
-" set nostartofline
-" 
-" if &listchars ==# 'eol:$'
-"   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-" endif
-" 
-" function! NumberToggle()
-"   if(&relativenumber == 1)
-"     set nornu
-"     set number
-"   else
-"     set rnu
-"   endif
-" endfunc
-" 
-" function! neomake#makers#ft#scss#EnabledMakers()
-"     return executable('sass-lint') ? ['sasslint'] : ['scsslint']
-" endfunction
-" 
-" filetype plugin indent on
-" " autocmd! BufWritePost,BufEnter * Neomake
-" colorscheme solarized
-" highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-" match ExtraWhitespace /\s\+$\|\t/
-" autocmd FileType html,css EmmetInstall
-" autocmd FileType javascript let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
-" 
+set number
+set cursorline
+set clipboard+=unnamedplus
+set tags=.git/.ctags
+set shiftwidth=2
+set tabstop=2
+set expandtab
+set list
+set showcmd
+set showmatch
+set showmode
+set ruler
+set modeline
+set esckeys
+set linespace=0
+set nojoinspaces
+set splitbelow
+set splitright
+set ignorecase          " Make searching case insensitive
+set smartcase           " ... unless the query has capital letters.
+set gdefault            " Use 'g' flag by default with :s/foo/bar/.
+set termguicolors
+set background=light " or dark
+set completeopt=longest,menuone,preview
+
+if !&scrolloff
+  set scrolloff=3
+endif
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
+set nostartofline
+
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set nornu
+    set number
+  else
+    set rnu
+  endif
+endfunc
+
+function! neomake#makers#ft#scss#EnabledMakers()
+    return executable('sass-lint') ? ['sasslint'] : ['scsslint']
+endfunction
+
+filetype plugin indent on
+" autocmd! BufWritePost,BufEnter * Neomake
+colorscheme solarized
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+$\|\t/
+autocmd FileType html,css EmmetInstall
+autocmd FileType javascript let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+
 " let mapleader="\<SPACE>"
 " let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 " let g:airline#extensions#tabline#enabled = 1
