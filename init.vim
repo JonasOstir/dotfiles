@@ -1,194 +1,125 @@
 call plug#begin()
-
-Plug 'benekastah/neomake'
-Plug 'cloudhead/neovim-fuzzy'
-" Plug 'vimlab/neojs'
-" Plug 'shougo/vimfiler.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Plug 'eugen0329/vim-esearch'
-Plug 'jiangmiao/auto-pairs'
-Plug 'dyng/ctrlsf.vim'
-Plug 'benekastah/neomake'
-Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
-" Plug 'raimondi/delimitmate'
+ 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips'
-Plug 'ternjs/tern', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'tpope/vim-surround'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-fugitive'
-Plug 'mklabs/split-term.vim'
-" Plug 'vifm/neovim-vifm'
 Plug 'mhartington/deoplete-typescript'
-Plug 'leafgarland/typescript-vim'
-Plug 'fntlnz/atags.vim'
-Plug 'mattn/emmet-vim'
-Plug 'gcorne/vim-sass-lint'
-Plug 'scrooloose/nerdtree'
-Plug 'valloric/matchtagalways'
-Plug 'altercation/vim-colors-solarized'
+Plug 'herringtondarkholme/yats.vim'
+" Plug 'scrooloose/nerdtree'
+" Plug 'benekastah/neomake'
+" Plug 'cloudhead/neovim-fuzzy'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'airblade/vim-gitgutter'
+
+" Add plugins to &runtimepath
 
 call plug#end()
 
-set number
-set cursorline
-set clipboard+=unnamedplus
-nnoremap N Nzz
-nnoremap n nzz
-nnoremap = V=
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
-nnoremap <leader>% :MtaJumpToOtherTag<cr>
-set tags=.ctag
-
-" Begin indentation
-filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=2
-" when indenting with '>', use 4 spaces width
-set shiftwidth=2
-" On pressing tab, insert 4 spaces
-set expandtab
-" end indentation
-
-set list
-nnoremap <C-p> :FuzzyOpen<CR>
-
-" Map the leader key to SPACE
-let mapleader="\<SPACE>"
-
-" Change cursor shape
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-nnoremap <tab>   :bnext<CR>
-nnoremap <S-tab> :bprevious<CR>
-nnoremap <Leader><TAB> <C-w><C-w>
-nnoremap <Leader><S-tab> <C-w>h
-nnoremap <Leader>q :bdelete<CR>
-nnoremap <Esc> :noh<return><Esc>
-nnoremap <Leader>l ^vg_
-nnoremap <Leader>nt :NERDTree<cr>
-nnoremap <Leader>nf :NERDTreeFind<cr>
-nnoremap <Leader>t :call atags#generate()<cr>
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-noremap <Leader>f :CtrlSF<space>
-let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules', 'node_modules', '.*', '.ctag', 'fonts']
-
-
-" Do neomake on every file
-autocmd! BufWritePost,BufEnter * Neomake
-" autocmd BufWritePost * call atags#generate()
-
-" Begin Autocomplete: https://www.gregjs.com/vim/2016/configuring-the-deoplete-asynchronous-keyword-completion-plugin-with-tern-for-vim/
+" set number
+" set cursorline
+" set clipboard+=unnamedplus
+" set tags=.git/.ctags
+" set shiftwidth=2
+" set tabstop=2
+" set expandtab
+" set list
+" set showcmd
+" set showmatch
+" set showmode
+" set ruler
+" set modeline
+" set esckeys
+" set linespace=0
+" set nojoinspaces
+" set splitbelow
+" set splitright
+" set ignorecase          " Make searching case insensitive
+" set smartcase           " ... unless the query has capital letters.
+" set gdefault            " Use 'g' flag by default with :s/foo/bar/.
+" set termguicolors
+" set background=light " or dark
+" set completeopt=longest,menuone,preview
+" 
+" if !&scrolloff
+"   set scrolloff=3
+" endif
+" if !&sidescrolloff
+"   set sidescrolloff=5
+" endif
+" set nostartofline
+" 
+" if &listchars ==# 'eol:$'
+"   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+" endif
+" 
+" function! NumberToggle()
+"   if(&relativenumber == 1)
+"     set nornu
+"     set number
+"   else
+"     set rnu
+"   endif
+" endfunc
+" 
+" function! neomake#makers#ft#scss#EnabledMakers()
+"     return executable('sass-lint') ? ['sasslint'] : ['scsslint']
+" endfunction
+" 
+" filetype plugin indent on
+" " autocmd! BufWritePost,BufEnter * Neomake
+" colorscheme solarized
+" highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+" match ExtraWhitespace /\s\+$\|\t/
+" autocmd FileType html,css EmmetInstall
+" autocmd FileType javascript let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+" 
+" let mapleader="\<SPACE>"
+" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules', 'node_modules', '.*', '.ctag', 'fonts']
+" let g:airline#extensions#tabline#enabled = 2
+" let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#right_sep = ' '
+" let g:airline#extensions#tabline#right_alt_sep = '|'
+" let g:airline_left_sep = ' '
+" let g:airline_left_alt_sep = '|'
+" let g:airline_right_sep = ' '
+" let g:airline_right_alt_sep = '|'
+" let g:atags_build_commands_list = ["ctags -R -V -f .git/.ctags"]
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_completion_start_length = 1
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = ['tern#Complete',' jspc#omni']
-
-let g:sass_lint_config = 'app/assets/styles/.scss-lint.yml'
-function! neomake#makers#ft#scss#EnabledMakers()
-    return executable('sass-lint') ? ['sasslint'] : ['scsslint']
-endfunction
-
-set completeopt=longest,menuone,preview
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs']
-" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
-autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:UltiSnipsExpandTrigger="<C-j>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-let g:SuperTabClosePreviewOnPopupClose = 1
-" End Autocomplete
-
-map <D-s>q :w<CR>
-
-" Begin tricks: http://nerditya.com/code/guide-to-neovim/
-set showcmd
-set showmatch
-set showmode
-set ruler
-set modeline
-set esckeys
-set linespace=0
-set nojoinspaces
-set splitbelow
-set splitright
-
-if !&scrolloff
-  set scrolloff=3
-endif
-if !&sidescrolloff
-  set sidescrolloff=5
-endif
-set nostartofline
-" Tell Vim which characters to show for expanded TABs,
-" trailing whitespace, and end-of-lines. VERY useful!
-if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-endif
-set list                " Show problematic characters.
-
-" Also highlight all tabs and trailing whitespace characters.
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-match ExtraWhitespace /\s\+$\|\t/
-
-set ignorecase          " Make searching case insensitive
-set smartcase           " ... unless the query has capital letters.
-set gdefault            " Use 'g' flag by default with :s/foo/bar/.
-
-" Search and Replace
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
-" nmap <Leader>s :%s//g<Left><Left>
-
-" Relative numbering
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set nornu
-    set number
-  else
-    set rnu
-  endif
-endfunc
-
-" Toggle between normal and relative numbering.
-nnoremap <leader>r :call NumberToggle()<cr>
-
-" Use ; for commands.
-" nnoremap ; :
-" Use Q to execute default register.
-nnoremap Q @q
-
-" Airline
-let g:airline#extensions#tabline#enabled = 2
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '|'
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
-" let g:airline_theme= 'gruvbox'
-" End Tricks
-
-let g:atags_build_commands_list = ["ctags -R"]
-
-" Emmet
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
-set termguicolors
-set background=light " or dark
-colorscheme solarized
-
-let g:AutoPairsFlyMode = 1
+" let g:deoplete#enable_ignore_case = 1
+" let g:deoplete#auto_complete_start_length = 0
+" let g:auto_complete_start_length = 0
+" let g:sass_lint_config = 'app/assets/styles/.scss-lint.yml'
+" let g:user_emmet_install_global = 0
+" " let g:deoplete#sources = {}
+" " let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs']
+" " let g:tern#command = ['tern']
+" " let g:tern#arguments = ['--persistent']
+" let g:UltiSnipsExpandTrigger="<C-j>"
+" " let g:SuperTabClosePreviewOnPopupClose = 1
+" 
+" inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
+" 
+" nnoremap <C-d>            <C-d>zz
+" nnoremap <C-p>            :FuzzyOpen<CR>
+" nnoremap <C-u>            <C-u>zz
+" nnoremap <Esc>            :noh<return><Esc>
+" nnoremap <Leader><S-tab>  <C-w>h
+" nnoremap <Leader><TAB>    <C-w><C-w>
+" nnoremap <Leader>f        :CtrlSF<space>
+" nnoremap <Leader>l        ^vg_
+" nnoremap <Leader>nf       :NERDTreeFind<cr>
+" nnoremap <Leader>nt       :NERDTree<cr>
+" nnoremap <Leader>q        :bdelete<CR>
+" nnoremap <Leader>s        :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+" nnoremap <Leader>t        :call atags#generate()<cr>
+" nnoremap <S-tab>          :bprevious<CR>
+" nnoremap <leader>%        :MtaJumpToOtherTag<cr>
+" nnoremap <leader>r        :call NumberToggle()<cr>
+" nnoremap <leader>z        vi{zf
+" nnoremap <tab>            :bnext<CR>
+" nnoremap =                V=
+" nnoremap N                Nzz
+" nnoremap Q                @q
+" nnoremap n                nzz
