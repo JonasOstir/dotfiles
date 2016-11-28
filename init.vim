@@ -3,11 +3,11 @@ call plug#begin()
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mhartington/deoplete-typescript'
 Plug 'herringtondarkholme/yats.vim'
-" Plug 'scrooloose/nerdtree'
-" Plug 'benekastah/neomake'
-" Plug 'cloudhead/neovim-fuzzy'
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'benekastah/neomake'
+Plug 'cloudhead/neovim-fuzzy'
+Plug 'altercation/vim-colors-solarized'
+Plug 'airblade/vim-gitgutter'
 
 " Add plugins to &runtimepath
 
