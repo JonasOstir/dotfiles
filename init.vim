@@ -5,9 +5,21 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'benekastah/neomake'
 Plug 'cloudhead/neovim-fuzzy'
+Plug 'dyng/ctrlsf.vim'
+Plug 'fntlnz/atags.vim'
+Plug 'gcorne/vim-sass-lint'
 Plug 'herringtondarkholme/yats.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mattn/emmet-vim'
 Plug 'mhartington/deoplete-typescript', { 'do': ':UpdateRemotePlugins' }
+Plug 'mklabs/split-term.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'valloric/matchtagalways'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Add plugins to &runtimepath
 
@@ -64,41 +76,41 @@ function! neomake#makers#ft#scss#EnabledMakers()
 endfunction
 
 filetype plugin indent on
-" autocmd! BufWritePost,BufEnter * Neomake
+autocmd! BufWritePost,BufEnter * Neomake
 colorscheme solarized
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$\|\t/
 autocmd FileType html,css EmmetInstall
 autocmd FileType javascript let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
-" let mapleader="\<SPACE>"
-" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-" let g:airline#extensions#tabline#enabled = 1
-" let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules', 'node_modules', '.*', '.ctag', 'fonts']
-" let g:airline#extensions#tabline#enabled = 2
-" let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-" let g:airline#extensions#tabline#right_sep = ' '
-" let g:airline#extensions#tabline#right_alt_sep = '|'
-" let g:airline_left_sep = ' '
-" let g:airline_left_alt_sep = '|'
-" let g:airline_right_sep = ' '
-" let g:airline_right_alt_sep = '|'
-" let g:atags_build_commands_list = ["ctags -R -V -f .git/.ctags"]
+let mapleader="\<SPACE>"
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+let g:airline#extensions#tabline#enabled = 1
+let g:ctrlsf_ignore_dir = ['bower_components', 'npm_modules', 'node_modules', '.*', '.ctag', 'fonts']
+let g:airline#extensions#tabline#enabled = 2
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = '|'
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = '|'
+let g:atags_build_commands_list = ["ctags -R -V -f .git/.ctags"]
 let g:deoplete#enable_at_startup = 1
-" let g:deoplete#enable_ignore_case = 1
-" let g:deoplete#auto_complete_start_length = 0
-" let g:auto_complete_start_length = 0
-" let g:sass_lint_config = 'app/assets/styles/.scss-lint.yml'
-" let g:user_emmet_install_global = 0
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#auto_complete_start_length = 0
+let g:auto_complete_start_length = 0
+let g:sass_lint_config = 'app/assets/styles/.scss-lint.yml'
+let g:user_emmet_install_global = 0
 " " let g:deoplete#sources = {}
 " " let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs']
 " " let g:tern#command = ['tern']
 " " let g:tern#arguments = ['--persistent']
-" let g:UltiSnipsExpandTrigger="<C-j>"
-" " let g:SuperTabClosePreviewOnPopupClose = 1
-" 
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:SuperTabClosePreviewOnPopupClose = 1
+
 " inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
 " 
 " nnoremap <C-d>            <C-d>zz
