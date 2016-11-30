@@ -6,7 +6,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'benekastah/neomake'
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'dyng/ctrlsf.vim'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'fntlnz/atags.vim'
 Plug 'gcorne/vim-sass-lint'
 Plug 'herringtondarkholme/yats.vim'
@@ -60,9 +60,9 @@ if !&sidescrolloff
 endif
 set nostartofline
 
-if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-endif
+" if &listchars ==# 'eol:$'
+"   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+" endif
 
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -83,7 +83,7 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$\|\t/
 autocmd! BufWritePost,BufEnter * Neomake
 autocmd FileType html,css EmmetInstall
-autocmd FileType javascript let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+" autocmd FileType javascript let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
 let mapleader="\<SPACE>"
@@ -112,14 +112,14 @@ let g:user_emmet_install_global = 0
 " " let g:tern#command = ['tern']
 " " let g:tern#arguments = ['--persistent']
 let g:UltiSnipsExpandTrigger="<C-j>"
-let g:SuperTabClosePreviewOnPopupClose = 1
+" let g:SuperTabClosePreviewOnPopupClose = 1
 
-inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
+" inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
 
-" nnoremap <C-d>            <C-d>zz
-" nnoremap <C-p>            :FuzzyOpen<CR>
-" nnoremap <C-u>            <C-u>zz
-" nnoremap <Esc>            :noh<return><Esc>
+nnoremap <C-d>            <C-d>zz
+nnoremap <C-p>            :FuzzyOpen<CR>
+nnoremap <C-u>            <C-u>zz
+nnoremap <Esc>            :noh<return><Esc>
 " nnoremap <Leader><S-tab>  <C-w>h
 " nnoremap <Leader><TAB>    <C-w><C-w>
 " nnoremap <Leader>f        :CtrlSF<space>
@@ -134,7 +134,6 @@ inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
 " nnoremap <leader>r        :call NumberToggle()<cr>
 " nnoremap <leader>z        vi{zf
 " nnoremap <tab>            :bnext<CR>
-" nnoremap =                V=
-" nnoremap N                Nzz
-" nnoremap Q                @q
-" nnoremap n                nzz
+nnoremap =                V=
+nnoremap N                Nzz
+nnoremap n                nzz
