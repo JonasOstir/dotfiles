@@ -6,10 +6,11 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'benekastah/neomake'
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'dyng/ctrlsf.vim'
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 Plug 'fntlnz/atags.vim'
 Plug 'gcorne/vim-sass-lint'
 Plug 'herringtondarkholme/yats.vim'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mhartington/deoplete-typescript', { 'do': ':UpdateRemotePlugins' }
@@ -60,9 +61,9 @@ if !&sidescrolloff
 endif
 set nostartofline
 
-" if &listchars ==# 'eol:$'
-"   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-" endif
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
 
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -83,8 +84,7 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$\|\t/
 autocmd! BufWritePost,BufEnter * Neomake
 autocmd FileType html,css EmmetInstall
-" autocmd FileType javascript let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
-autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+autocmd FileType javascript let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
 let mapleader="\<SPACE>"
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -105,6 +105,9 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#auto_complete_start_length = 0
 let g:auto_complete_start_length = 0
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_debug = 1
+let g:deoplete#enable_profile = 1
 let g:sass_lint_config = 'app/assets/styles/.scss-lint.yml'
 let g:user_emmet_install_global = 0
 " " let g:deoplete#sources = {}
@@ -112,7 +115,8 @@ let g:user_emmet_install_global = 0
 " " let g:tern#command = ['tern']
 " " let g:tern#arguments = ['--persistent']
 let g:UltiSnipsExpandTrigger="<C-j>"
-" let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
+call deoplete#enable_logging('DEBUG', '/Users/Jonas/deoplete.log')
 
 " inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
 
@@ -120,20 +124,21 @@ nnoremap <C-d>            <C-d>zz
 nnoremap <C-p>            :FuzzyOpen<CR>
 nnoremap <C-u>            <C-u>zz
 nnoremap <Esc>            :noh<return><Esc>
-" nnoremap <Leader><S-tab>  <C-w>h
-" nnoremap <Leader><TAB>    <C-w><C-w>
-" nnoremap <Leader>f        :CtrlSF<space>
-" nnoremap <Leader>l        ^vg_
-" nnoremap <Leader>nf       :NERDTreeFind<cr>
-" nnoremap <Leader>nt       :NERDTree<cr>
-" nnoremap <Leader>q        :bdelete<CR>
-" nnoremap <Leader>s        :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
-" nnoremap <Leader>t        :call atags#generate()<cr>
-" nnoremap <S-tab>          :bprevious<CR>
-" nnoremap <leader>%        :MtaJumpToOtherTag<cr>
-" nnoremap <leader>r        :call NumberToggle()<cr>
-" nnoremap <leader>z        vi{zf
-" nnoremap <tab>            :bnext<CR>
+nnoremap <Leader><S-tab>  <C-w>h
+nnoremap <Leader><TAB>    <C-w><C-w>
+nnoremap <Leader>f        :CtrlSF<space>
+nnoremap <Leader>l        ^vg_
+nnoremap <Leader>nf       :NERDTreeFind<cr>
+nnoremap <Leader>nt       :NERDTree<cr>
+nnoremap <Leader>q        :bdelete<CR>
+nnoremap <Leader>s        :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+nnoremap <Leader>t        :call atags#generate()<cr>
+nnoremap <S-tab>          :bprevious<CR>
+nnoremap <leader>%        :MtaJumpToOtherTag<cr>
+nnoremap <leader>r        :call NumberToggle()<cr>
+nnoremap <leader>z        vi{zf
+nnoremap <tab>            :bnext<CR>
 nnoremap =                V=
 nnoremap N                Nzz
+nnoremap Q                @q
 nnoremap n                nzz
