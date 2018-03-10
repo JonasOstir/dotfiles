@@ -1,6 +1,10 @@
+" delete '' => ds'
+
 call plug#begin()
 
 
+" Add plugins to &runtimepath
+" Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'SirVer/ultisnips'
@@ -19,7 +23,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 Plug 'mhartington/deoplete-typescript', { 'do': ':UpdateRemotePlugins' }
 Plug 'mklabs/split-term.vim'
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mtth/scratch.vim'
 Plug 'quramy/tsuquyomi', { 'do': 'make' }
 Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdtree'
@@ -30,7 +34,6 @@ Plug 'tpope/vim-surround'
 Plug 'valloric/matchtagalways'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Add plugins to &runtimepath
 
 call plug#end()
 
@@ -47,7 +50,7 @@ set showmatch
 set showmode
 set ruler
 set modeline
-set esckeys
+" set esckeys
 set linespace=0
 set nojoinspaces
 set splitbelow
@@ -92,6 +95,11 @@ function! SetupEnvironment()
     endif
   endif
   if l:path =~ '/Users/Jonas/code/reporting-manager'
+    if &filetype == 'html'
+      setlocal syntax=javascript
+    endif
+  endif
+  if l:path =~ '/Users/Jonas/partner'
     if &filetype == 'html'
       setlocal syntax=javascript
     endif
@@ -143,6 +151,7 @@ let g:deoplete#enable_refresh_always = 1
 let g:sass_lint_config = 'app/assets/styles/.scss-lint.yml'
 let g:tsuquyomi_single_quote_import = 1
 let g:user_emmet_install_global = 0
+let g:scratch_persistence_file = '/code/scratch/scratch'
 " call deoplete#enable_logging('DEBUG', '/Users/Jonas/deoplete.log')
 
 " imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
@@ -170,3 +179,7 @@ nnoremap =                V=
 nnoremap N                Nzz
 nnoremap Q                @q
 nnoremap n                nzz
+
+" Copy to clipboard
+set clipboard=unnamedplus
+
